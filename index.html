@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+	<head>
+	<title>Hello World</title>
+		<!-- required to get the THREE namespace in -->
+		<script src="node_modules/three/build/three.js"></script>
+		<!-- load thrid party plugins  here -->
+		<script src="node_modules/three/examples/js/controls/OrbitControls.js"></script>
+	</head>
+	<body>
+
+		<script src="bundle.js"></script>
+		<h1>ThreeJS typescript with javscripty plugins</h1>
+
+
+		<div>
+			<button id="btnForward">Forward</button>
+			<button id="btnBack">Back</button>
+			<button id="btnReset">Reset</button>
+		</div>
+		<div id="canvasContainer" style="height: 300px; background-color: #ccc; border:thin solid red; padding:10px;">
+			
+		</div>
+
+		<div>
+			<p>Insructions</p>
+			<pre>
+npm install -g typescript
+npm install --save-dev browserify
+
+//first transpile
+tsc
+
+//2nd browserify
+browserify built/index.js > bundle.js
+
+//3rd
+import in your index.html head three.js and the plugings you using
+this is to import the THREE namespace in javascript world
+You don't import the plugins in the typescript files as they are not tyepscript compatible.
+But when typescript is transpile, it will understand the plugins in javscript.
+
+			</pre>
+			<p>allowJs doesn't really matter since we are not importing threejs plugins in the typescript. Instead we'll import the plugins on the html page.</p>
+			<pre>
+//tsconfig.json
+{
+    "compilerOptions": {
+        "module": "commonjs", 
+        "outDir": "built/", 
+        "sourceMap": true, 
+        "target": "es5",
+        "allowJs": true,
+        "lib":[
+        	"es5",
+        	"dom"
+        ]
+    }, 
+    "files": [
+        "index.ts", 
+        "dog.ts"
+    ]
+}
+			</pre>
+		</div>
+
+	</body>
+</html>
