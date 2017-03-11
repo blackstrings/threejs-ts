@@ -6,7 +6,7 @@ npm install -g browserify
 cd <intoProject>
 npm install
 
-## Build
+## If you choose to Modify and Build
 tsc
 browswerify built/index.js > bundle.js
 
